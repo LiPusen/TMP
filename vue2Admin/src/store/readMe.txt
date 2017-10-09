@@ -1,0 +1,6 @@
+状态机文件夹
+index.js是总的输出文件
+state.js管理所有的状态数据
+getters.js管理需要经过过滤的状态数据
+mutations.js管理对状态机数据的更新及数据过滤
+actions.js管理与状态数据相关的公共业务方法和数据请求
