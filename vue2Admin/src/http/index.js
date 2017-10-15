@@ -3,7 +3,7 @@ import api from './api'
 import axios from 'axios';
 
 // 全局设置
-axios.defaults.headers.common['Authorization'] = 'qms';
+axios.defaults.headers.common['Authorization'] = 'liyq';
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 
 const htp = axios.create();
