@@ -7,23 +7,17 @@ import store from './store'
 
 import components from './components'
 
-Object.keys(components).forEach((key) => {
-    var name = key.replace(/(\w)/, (v) => v.toUpperCase()) //首字母大写
-    Vue.component(`v${name}`, components[key])
+Object.keys(components).forEach((k) => {
+    var name = k.replace(/(\w)/, (v) => v.toUpperCase()) //首字母大写
+    Vue.component(`os${name}`, components[k])
 })
 
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
-    data: {
-        eventHub: new Vue()
-    },
-    el: '#app',
+    data: { eventHub: new Vue() },
     router,
     store,
-    template: '<App/>',
-    components: {
-        App
-    }
-})
+    render: h => h(App)
+}).$mount('#app')
