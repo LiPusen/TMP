@@ -1,0 +1,248 @@
+// 载入皮肤样式库
+@import './skin/skin.less';
+.g-main{
+  width: 95%;
+  height: 500px;
+  overflow: hidden;
+  font-size: @f-body;
+  background-color: #fff;
+  padding: 15px;
+  margin: 15px auto;
+  &-line{
+    margin: 20px 0;
+  }
+}
+
+.g-box{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-size: @f-body;
+}
+// 登录
+.g-login{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #222222;
+    &-view{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        box-shadow: 0px 0px 10px #999;
+    }
+    &-bg{
+        position: fixed;
+        top: 0;
+        left: 0;
+        opacity: 1;
+        width: 100%;
+        height: 100%;
+    }
+}
+// 全局布局样式
+.g-layout{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex: auto;
+    background-color: @c-bodyBg;
+    &-logo{
+        height: 32px;
+        background-color: #222;
+        border-radius: 6px;
+        margin: 16px;
+        }
+    &-left{
+        position: relative;
+        transition: all .5s ease-in-out;
+        background-color: @c-leftMenu;
+        display: flex;
+        flex-direction: column;
+        flex: 0 0 200px;
+        width: 200px;
+        height: 100%;
+        &.status1 {
+            width: 64px;
+            flex: 0 0 64px;
+        }
+        &.status2 {
+            width: 200px;
+            flex: 0 0 200px;
+        }
+        &-arrow {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            width: 32px;
+            height: 66px;
+            border-radius: 5px 0px 0px 5px;
+            text-align: center;
+            line-height: 66px;
+            background-color: rgba(255,255,255,.5);
+            font-size: 20px;
+            cursor: pointer;
+        }
+    }
+    &-main{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        transition: all .5s ease-in-out;
+        display: flex;
+        flex-direction: column;
+    }
+}
+// 树形菜单
+.g-menu{
+    &:not(.el-menu--collapse){
+        width: 200px;
+    }
+}
+// 主页面头部
+.g-header{
+    background-color: #fff;
+    height: 64px;
+    line-height: 64px;
+    padding: 0 @w-head;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow:0 1px 2px #ccc ;
+    &-title{
+        font-size: 20px;
+        flex-grow: 2;
+        font-weight: normal;
+    }
+    &-info{
+        flex-grow: 1;
+        text-align: right;
+        i{font-style: normal; transition: all 0.3s; padding: 5px 10px;}
+        &-fun{
+            cursor: pointer;
+            margin-left: 10px;
+            &:hover{color: #20a0ff;}
+        }
+    }
+}
+// 面包屑
+.g-crumb{
+    padding: @w-main;
+}
+// 主路由窗口
+.g-view{
+    position: relative;
+    width: 100%;
+    flex: 1;
+    overflow: auto;
+    &-main{
+        min-width: 1000px;
+        padding: @w-main;
+        overflow: hidden;
+    }
+}
+// 搜索筛选模块
+.g-screen{
+    width: 100%;
+    background-color: @c-screen;
+    padding: 25px 40px;
+    box-shadow: 0px 2px 2px #ddd;
+    &-input{
+        width: 150px;
+        display: inline-block;
+        margin-right: 15px;
+    }
+}
+// 表单
+.g-form{
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0px 2px 2px #ddd;
+    &-img{
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+    }
+    &-btn{
+        color: #ff5769;
+        text-decoration: underline;
+        cursor: pointer;
+        margin: 0px 6px;
+    }
+}
+// 分页
+.g-pagination {
+    margin: 30px 0px;
+    text-align: center;
+}
+
+//全局面板样式
+.g-panel{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+  z-index: 10;
+  &-layout {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    &-left{
+      left:0;
+    }
+    &-middle{
+      left: 0;
+      margin: auto;
+    }
+    &-heading {
+      height: 60px;
+      line-height: 60px;
+      padding: 0 15px;
+      color: #333;
+      font-size: 18px;
+      font-weight: 500;
+      border-bottom: 1px solid #ddd;
+      .close{
+        float: right;
+        font-size: 24px;
+        cursor: pointer;
+        padding:0 15px;
+      }
+    }
+    &-body {
+      padding: 15px;
+      overflow: auto;
+      height:84%;
+    }
+    &-footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      line-height: 70px;
+      padding: 10px 15px;
+      text-align: right;
+      border-top: 1px solid #ddd;
+    }
+  }
+  &-layout.slideRight{
+
+  }
+  &-layout.slideLeft{
+
+    transition: left 1s;
+  }
+}

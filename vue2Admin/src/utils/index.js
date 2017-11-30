@@ -27,7 +27,7 @@ export function getParams(url) {
 }
 
 //set session
-export function setSen(k, val) {
+export function setSi(k, val) {
 	if(typeof val == 'string') {
 		sessionStorage.setItem(k, val);
 		return val;
@@ -38,7 +38,7 @@ export function setSen(k, val) {
 }
 
 //get session
-export function getSen(k) {
+export function getSi(k) {
 	let uu = sessionStorage.getItem(k);
 	try {
 		if(typeof JSON.parse(uu) != 'number') {
@@ -70,13 +70,15 @@ export function getLoc(k) {
 	return uu;
 }
 
-//clear session
-export function clearKey(k) {
-	if(k) {
-		sessionStorage.removeItem(k);
-	} else {
-		sessionStorage.clear();
-	}
+// 清除浏览器内存数据 @k 需求清除内存字段的键名 @m 指定需要清除的存储空间 有两个值's'或者'l';没有k值则清除内存数据
+export function clearKey(k, m) {
+	m = m || 's';
+    if(k) {
+        m == 'l' ? localStorage.removeItem(k) : sessionStorage.removeItem(k);
+    } else {
+        sessionStorage.clear();
+        localStorage.clear();
+    }
 }
 
 //获取屏幕宽度高度
@@ -86,17 +88,6 @@ export function getClient() {
 	return {
 		clientWidth,
 		clientHeight
-	}
-}
-
-//格式化距离
-export function formatDistance(distance) {
-	if(distance < 0.1) {
-		return '<100m'
-	} else if(distance >= 0.1 && distance < 1) {
-		return(distance * 1000) + 'm';
-	} else if(distance >= 1) {
-		return distance.toFixed(1) + 'km';
 	}
 }
 
@@ -140,45 +131,13 @@ export function browser() {
 	return os;
 }
 
-//格式化日期
-Date.prototype.Format = function(fmt) {
-	let o = {
-		"M+": this.getMonth() + 1, //月份
-		"d+": this.getDate(), //日
-		"h+": this.getHours(), //小时
-		"m+": this.getMinutes(), //分
-		"s+": this.getSeconds(), //秒
-		"q+": Math.floor((this.getMonth() + 3) / 3), //季度
-		"S": this.getMilliseconds() //毫秒
-	};
-	if(/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-	for(let k in o)
-		if(new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-	return fmt;
-}
-
-//格式化日期
-export function formatDate(nS, format) {
-	//日期格式化
-	if(!!!nS) return "";
-	format = format || "yyyy-MM-dd hh:mm:ss";
-	return new Date(nS).Format(format);
-}
 
 //验证手机号码
 export function checkPhone(phone) {
 	return !!/^1[3578]\d{9}$/.test(phone);
 }
 
-//验证密码
-export function checkPassword(pwd) {
-	return !!/^[a-z0-9_-]{6,16}$/.test(pwd);
-}
 
-//验证验证吗
-export function checkVerify(code) {
-	return !!/^\d{4}$/.test(code);
-}
 
 //去除字符串左右两边的空格
 export function trim(str) {
