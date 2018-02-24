@@ -1,14 +1,17 @@
 <template>
-	<div>
-		<h2>首页</h2>
-		<router-link to="/button">跳转</router-link>
+	<div class="center">
+		<h1>VUE2</h1>
+		<h1>HELLO DEVELOPER</h1>
 	</div>
-	
-	
 </template>
 
 <script>
 </script>
 
-<style>
+<style lang="less" scoped>
+	.center{
+		margin-top: 15%;
+		width: 100%;
+		h1{text-align: center;text-shadow: 0 1px 1px 10px #ccc}
+	}
 </style>
